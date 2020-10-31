@@ -11,6 +11,7 @@ import SuccessPage from './pages/SuccessPage';
 import Modal from "react-modal";
 import Hint from './components/Hint';
 import { fireEvent } from '@testing-library/react';
+import Redeem from './pages/Redeem';
 
 Modal.setAppElement('#root');
 
@@ -31,29 +32,32 @@ function App() {
 	}, []);
 	return (
 		<Router>
-			<div>
-				{/* <nav>
-					<ul>
-						<li>
-							<Link to='/map'>Map</Link>
-						</li>
-						<li>
-							<Link to='/detail'>Detail</Link>
-						</li>
-						<li>
-							<Link to='/profile'>Profile</Link>
-						</li>
-					</ul>
-				</nav> */}
+			<div className="gradient-teal h-screen">
 				<Appbar />
 				<Switch>
-					<Route path="/map" component={QuestMap} />
-					<Route path="/check-in-qr" component={CheckinQR} />
-					<Route path='/detail'>
-						<PlaceDetail id={'2P0oCX8wWZdG7ISokBrI'} name={''} image={''} detail={''} />
-					</Route>
-					<Route path="/success" component={SuccessPage} />
-					<Route path="/hint" component={Hint} />
+					<Route path='/' exact component={QuestMap} />
+					<div className='m-4'>
+						<Route path='/check-in-qr'>
+							<CheckinQR firebase={firebase} />
+						</Route>
+						<Route path='/detail'>
+							<PlaceDetail
+								id={'2P0oCX8wWZdG7ISokBrI'}
+								name={'Wat Phra Kaew'}
+								image={
+									'https://lp-cms-production.imgix.net/2019-06/f38562393be73d571e111dbd0b060d58-wat-phra-kaew.jpg'
+								}
+								detail={
+									'Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce leo augue, imperdiet sit amet odio a, imperdiet condimentum ante. Integer nec leo id nibh elementum posuere.'
+								}
+							/>
+						</Route>
+						<Route path='/success' component={SuccessPage}></Route>
+						<Route path='/redeem' component={Redeem} />
+					</div>
+					{/* <Route path='/profile'>
+						<Profile db={firebase.firestore()} />
+					</Route> */}
 				</Switch>
 			</div>
 		</Router>
