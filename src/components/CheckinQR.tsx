@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import useFirebase from '../hooks/useFirebase';
 import QrReader from 'react-qr-reader';
 
 const MOCKING_USER = 'SPnx58ZW8iu0A5rftlqA';
 
-function CheckinQR({ firebase }: { firebase: any }) {
-  // const [qrResult, setQrResult] = useState('');
+function CheckinQR() {
+	// const [qrResult, setQrResult] = useState('');
+	const firebase = useFirebase();
 
 	const handleScan = async (data: string | null) => {
 		if (data) {
-      // setQrResult(data);
-      const checkinData = {
-        place: data,
-        timestamp: new Date(),
-        user: MOCKING_USER
-      };
-      await firebase.firestore().collection('checkins').add(checkinData);
+			const checkinData = {
+				place: data,
+				timestamp: new Date(),
+				user: MOCKING_USER,
+			};
+			await firebase.firestore().collection('checkins').add(checkinData);
 		}
 	};
 
