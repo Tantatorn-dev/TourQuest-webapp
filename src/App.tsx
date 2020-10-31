@@ -43,8 +43,8 @@ function App() {
 				</nav> */}
 				<Appbar />
 				<Switch>
+					<Route path='/' exact component={QuestMap} />
 					<div className='m-4'>
-						<Route path='/' exact component={QuestMap} />
 						<Route path='/check-in-qr'>
 							<CheckinQR firebase={firebase} />
 						</Route>
