@@ -6,6 +6,7 @@ import PlaceDetail from './pages/PlaceDetail';
 import QuestMap from "./pages/QuestMap";
 import CheckinQR from './components/CheckinQR';
 import 'leaflet/dist/leaflet.css';
+import SuccessPage from './pages/SuccessPage';
 
 function App() {
 	useEffect(() => {
@@ -42,6 +43,7 @@ function App() {
 					<Route path='/detail'>
 						<PlaceDetail id={'2P0oCX8wWZdG7ISokBrI'} name={''} image={''} detail={''} />
 					</Route>
+					<Route path="/success" component={SuccessPage} />
 				</Switch>
 			</div>
 		</Router>
