@@ -1,7 +1,7 @@
 import React from 'react';
 import { Map, TileLayer, Circle, Popup, Marker } from 'react-leaflet';
 import '../styles/leaflet.css';
-import './QuestMap.css';
+import '../styles/QuestMap.css';
 
 export default function QuestMap() {
 	let position = {
