@@ -7,6 +7,10 @@ import QuestMap from "./pages/QuestMap";
 import CheckinQR from './components/CheckinQR';
 import 'leaflet/dist/leaflet.css';
 import SuccessPage from './pages/SuccessPage';
+import Modal from "react-modal";
+import Hint from './components/Hint';
+
+Modal.setAppElement('#root');
 
 function App() {
 	useEffect(() => {
@@ -44,6 +48,7 @@ function App() {
 						<PlaceDetail id={'2P0oCX8wWZdG7ISokBrI'} name={''} image={''} detail={''} />
 					</Route>
 					<Route path="/success" component={SuccessPage} />
+					<Route path="/hint" component={Hint} />
 				</Switch>
 			</div>
 		</Router>

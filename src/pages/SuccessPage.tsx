@@ -1,6 +1,6 @@
 import React from 'react';
 import Appbar from '../components/Appbar';
-import { FacebookShareButton ,FacebookIcon, TwitterIcon, TwitterShareButton, InstapaperIcon, InstapaperShareButton } from "react-share";
+import { FacebookShareButton ,FacebookIcon, TwitterIcon, TwitterShareButton } from "react-share";
 
 export default function SuccessPage() {
 
