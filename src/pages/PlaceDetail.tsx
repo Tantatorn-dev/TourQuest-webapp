@@ -16,7 +16,7 @@ function PlaceDetail({
     const history = useHistory();
 	return (
 		<div className='static flex flex-col w-full shadow-lg h-full p-4 gradient-item rounded-lg'>
-			<div className="absolute flex flex-row items-center justify-center text-xl left-2 p-2 bg-teal-500 text-lg text-white rounded shadow-lg">
+			<div className="absolute flex flex-row items-center justify-center text-xl left-2 p-2 bg-teal-500 text-white rounded shadow-lg">
 				<MdLocationOn />
 				{name}
 			</div>
