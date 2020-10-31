@@ -1,12 +1,10 @@
 import React from 'react';
-import Appbar from '../components/Appbar';
 import { FacebookShareButton ,FacebookIcon, TwitterIcon, TwitterShareButton, InstapaperIcon, InstapaperShareButton } from "react-share";
 
 export default function SuccessPage() {
 
     return (
         <div>
-            <Appbar />
             <div className="flex h-screen">
                 <div className="m-auto">
                     <h2>Quest Completed</h2>

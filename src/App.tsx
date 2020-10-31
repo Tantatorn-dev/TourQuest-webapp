@@ -60,6 +60,7 @@ function App() {
 								}
 							/>
 						</Route>
+						<Route path='/success' component={SuccessPage}></Route>
 					</div>
 					{/* <Route path='/profile'>
 						<Profile db={firebase.firestore()} />
