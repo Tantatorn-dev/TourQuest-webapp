@@ -7,6 +7,7 @@ import {
   Link
 } from "react-router-dom";
 import QuestMap from "./components/QuestMap";
+import 'leaflet/dist/leaflet.css';
 
 function App() {
   return (
@@ -19,7 +20,6 @@ function App() {
             </li>
           </ul>
         </nav>
-
         <Switch>
           <Route path="/map">
             <QuestMap />

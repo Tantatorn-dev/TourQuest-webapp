@@ -1,18 +1,24 @@
 import React from 'react';
-import {Map} from 'react-leaflet';
+import { Map, TileLayer } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 
-function QuestMap() {
+export default function QuestMap() {
 
     let position = {
-        lat: 51.505,
-        lng: -0.09
+        lat: 13.7516,
+        lng: 100.4927
     }
 
-    let zoom = 12
+    let zoom = 17
 
     return (
-        <h1>this is a map</h1>
+        <div>
+            <Map center={position} zoom={zoom}>
+                <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+                />
+            </Map>
+        </div>
     )
 }
-
-export default QuestMap;
