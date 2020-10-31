@@ -13,18 +13,7 @@ function PlaceDetail({
 	image: string;
 	id: string;
 }) {
-	// const [data, setData]: [data: any, setData: any] = useState(null);
-	// useEffect(() => {
-	// 	const fetchPlace = async () => {
-	// 		const placeRef = firebase
-	// 			.firestore()
-	// 			.collection('places')
-	// 			.doc(id);
-	// 		const doc = await placeRef.get();
-	// 		setData(doc.data());
-	// 	};
-	// 	fetchPlace();
-	// }, []);
+ 
 	return (
 		<>
 			<h3>{name}</h3>

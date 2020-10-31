@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import firebase from 'firebase';
 import PlaceDetail from './pages/PlaceDetail';
+import Profile from './pages/Profile';
 import QuestMap from "./components/QuestMap";
 import CheckinQR from './components/CheckinQR';
 
@@ -33,6 +34,9 @@ function App() {
 						<li>
 							<Link to='/detail'>Detail</Link>
 						</li>
+						<li>
+							<Link to='/profile'>Profile</Link>
+						</li>
 					</ul>
 				</nav>
         <Switch>
@@ -40,6 +44,9 @@ function App() {
           <Route path="/check-in-qr" component={CheckinQR} />
           <Route path='/detail'>
 						<PlaceDetail id={'2P0oCX8wWZdG7ISokBrI'} name={''} image={''} detail={''} />
+					</Route>
+          <Route path='/profile'>
+						<Profile />
 					</Route>
         </Switch>
       </div>
