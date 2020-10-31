@@ -3,11 +3,11 @@ import './styles/main.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import firebase from 'firebase';
 import PlaceDetail from './pages/PlaceDetail';
-// import Profile from './pages/Profile';
+import QuestMap from "./pages/QuestMap";
 import Appbar from './components/Appbar';
-import QuestMap from './components/QuestMap';
 import CheckinQR from './components/CheckinQR';
 import 'leaflet/dist/leaflet.css';
+import SuccessPage from './pages/SuccessPage';
 import { fireEvent } from '@testing-library/react';
 
 function App() {
@@ -60,6 +60,7 @@ function App() {
 								}
 							/>
 						</Route>
+						<Route path='/success' component={SuccessPage}></Route>
 					</div>
 					{/* <Route path='/profile'>
 						<Profile db={firebase.firestore()} />
