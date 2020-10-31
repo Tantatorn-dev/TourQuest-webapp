@@ -30,13 +30,12 @@ export default function QuestMap() {
 
 	useEffect(() => {
 		navigator.geolocation.getCurrentPosition(function (position) {
-			// console.log(position);
 			setPosition({
 				lat: position.coords.latitude,
 				lng: position.coords.longitude,
 			});
 		});
-	});
+	}, []);
 
 	return (
 		<div>
