@@ -1,5 +1,6 @@
 import React from 'react';
 import useFirebase from '../hooks/useFirebase';
+import { MdLocationOn } from 'react-icons/md';
 import QrReader from 'react-qr-reader';
 
 const MOCKING_USER = 'SPnx58ZW8iu0A5rftlqA';
@@ -24,8 +25,11 @@ function CheckinQR() {
 	};
 
 	return (
-		<div>
-			<h1 className='text-2xl'>Scan QR for check-in</h1>
+		<div className="flex flex-col w-full shadow-lg h-full p-4 gradient-item rounded-lg bg-white">
+			<div className='flex flex-row items-center text-2xl p-2 text-center'>
+				<MdLocationOn />
+				Scan QR for check-in
+			</div>
 			<QrReader
 				delay={300}
 				onError={handleScanError}

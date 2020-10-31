@@ -8,6 +8,11 @@ import Appbar from './components/Appbar';
 import CheckinQR from './components/CheckinQR';
 import 'leaflet/dist/leaflet.css';
 import SuccessPage from './pages/SuccessPage';
+import Modal from "react-modal";
+import Hint from './components/Hint';
+import { fireEvent } from '@testing-library/react';
+
+Modal.setAppElement('#root');
 
 function App() {
 	const firebase = useFirebase();
@@ -40,6 +45,14 @@ function App() {
 					{/* <Route path='/profile'>
 						<Profile db={firebase.firestore()} />
 					</Route> */}
+=======
+					<Route path="/map" component={QuestMap} />
+					<Route path="/check-in-qr" component={CheckinQR} />
+					<Route path='/detail'>
+						<PlaceDetail id={'2P0oCX8wWZdG7ISokBrI'} name={''} image={''} detail={''} />
+					</Route>
+					<Route path="/success" component={SuccessPage} />
+					<Route path="/hint" component={Hint} />
 				</Switch>
 			</div>
 		</Router>
