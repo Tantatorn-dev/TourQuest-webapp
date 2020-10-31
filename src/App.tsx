@@ -8,8 +8,12 @@ import Appbar from './components/Appbar';
 import CheckinQR from './components/CheckinQR';
 import 'leaflet/dist/leaflet.css';
 import SuccessPage from './pages/SuccessPage';
+import Modal from "react-modal";
+import Hint from './components/Hint';
 import { fireEvent } from '@testing-library/react';
 import Redeem from './pages/Redeem';
+
+Modal.setAppElement('#root');
 
 function App() {
 	useEffect(() => {
