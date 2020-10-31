@@ -36,16 +36,16 @@ function App() {
 						</li>
 					</ul>
 				</nav>
-        <Switch>
-          <Route path="/map" component={QuestMap} />
-          <Route path="/check-in-qr" component={CheckinQR} />
-          <Route path='/detail'>
+				<Switch>
+					<Route path="/map" component={QuestMap} />
+					<Route path="/check-in-qr" component={CheckinQR} />
+					<Route path='/detail'>
 						<PlaceDetail id={'2P0oCX8wWZdG7ISokBrI'} name={''} image={''} detail={''} />
 					</Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+				</Switch>
+			</div>
+		</Router>
+	);
 }
 
 export default App;

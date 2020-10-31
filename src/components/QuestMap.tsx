@@ -1,5 +1,5 @@
 import React from 'react';
-import { Map, TileLayer } from 'react-leaflet';
+import { Map, TileLayer, Circle } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import Appbar from "./Appbar";
 
@@ -20,6 +20,8 @@ export default function QuestMap() {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                 />
+                <Circle center={position} radius={200}>
+                </Circle>
             </Map>
         </div>
     )
