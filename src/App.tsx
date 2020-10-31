@@ -3,7 +3,7 @@ import './styles/main.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import firebase from 'firebase';
 import PlaceDetail from './pages/PlaceDetail';
-import QuestMap from "./components/QuestMap";
+import QuestMap from "./pages/QuestMap";
 import CheckinQR from './components/CheckinQR';
 import 'leaflet/dist/leaflet.css';
 

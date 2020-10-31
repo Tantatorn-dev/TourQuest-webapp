@@ -1,7 +1,7 @@
 import React from 'react';
 import { Map, TileLayer, Circle } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import Appbar from "./Appbar";
+import Appbar from "../components/Appbar";
 
 export default function QuestMap() {
 
