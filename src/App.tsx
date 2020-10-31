@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import firebase from 'firebase';
-import QuestMap from './components/QuestMap';
 import PlaceDetail from './pages/PlaceDetail';
+import QuestMap from "./components/QuestMap";
+import CheckinQR from './components/CheckinQR';
 
 function App() {
 	useEffect(() => {
@@ -34,18 +35,16 @@ function App() {
 						</li>
 					</ul>
 				</nav>
-
-				<Switch>
-					<Route path='/map'>
-						<QuestMap />
-					</Route>
-					<Route path='/detail'>
+        <Switch>
+          <Route path="/map" component={QuestMap} />
+          <Route path="/check-in-qr" component={CheckinQR} />
+          <Route path='/detail'>
 						<PlaceDetail id={'2P0oCX8wWZdG7ISokBrI'} name={''} image={''} detail={''} />
 					</Route>
-				</Switch>
-			</div>
-		</Router>
-	);
+        </Switch>
+      </div>
+    </Router>
+  );
 }
 
 export default App;
