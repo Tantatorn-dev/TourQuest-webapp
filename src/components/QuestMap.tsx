@@ -1,7 +1,7 @@
 import React from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import Appbar, {  } from "./Appbar";
+import Appbar from "./Appbar";
 
 export default function QuestMap() {
 
