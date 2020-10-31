@@ -4,11 +4,13 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import firebase from 'firebase';
 import PlaceDetail from './pages/PlaceDetail';
 import QuestMap from "./pages/QuestMap";
+import Appbar from './components/Appbar';
 import CheckinQR from './components/CheckinQR';
 import 'leaflet/dist/leaflet.css';
 import SuccessPage from './pages/SuccessPage';
 import Modal from "react-modal";
 import Hint from './components/Hint';
+import { fireEvent } from '@testing-library/react';
 
 Modal.setAppElement('#root');
 
@@ -26,12 +28,11 @@ function App() {
 		};
 		// Initialize Firebase
 		firebase.initializeApp(firebaseConfig);
-		firebase.analytics();
 	}, []);
 	return (
 		<Router>
 			<div>
-				<nav>
+				{/* <nav>
 					<ul>
 						<li>
 							<Link to='/map'>Map</Link>
@@ -39,8 +40,12 @@ function App() {
 						<li>
 							<Link to='/detail'>Detail</Link>
 						</li>
+						<li>
+							<Link to='/profile'>Profile</Link>
+						</li>
 					</ul>
-				</nav>
+				</nav> */}
+				<Appbar />
 				<Switch>
 					<Route path="/map" component={QuestMap} />
 					<Route path="/check-in-qr" component={CheckinQR} />
