@@ -1,6 +1,7 @@
 import React from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import Appbar, {  } from "./Appbar";
 
 export default function QuestMap() {
 
@@ -13,6 +14,7 @@ export default function QuestMap() {
 
     return (
         <div>
+            <Appbar />
             <Map center={position} zoom={zoom}>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
