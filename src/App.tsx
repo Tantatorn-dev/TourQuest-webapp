@@ -7,6 +7,7 @@ import {
   Link
 } from "react-router-dom";
 import QuestMap from "./components/QuestMap";
+import CheckinQR from './components/CheckinQR';
 
 function App() {
   return (
@@ -21,9 +22,8 @@ function App() {
         </nav>
 
         <Switch>
-          <Route path="/map">
-            <QuestMap />
-          </Route>
+          <Route path="/map" component={QuestMap} />
+          <Route path="/check-in-qr" component={CheckinQR} />
         </Switch>
       </div>
     </Router>
