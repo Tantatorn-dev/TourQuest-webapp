@@ -1,0 +1,6 @@
+.hint-icon {
+    z-index: 1000;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
