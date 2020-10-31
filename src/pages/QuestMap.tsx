@@ -16,11 +16,6 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 export default function QuestMap() {
-	// let position = {
-	// 	lat: 13.7516,
-	// 	lng: 100.4927,
-	// };
-
 	const [position, setPosition]: [
 		position: any | null,
 		setPosition: any
