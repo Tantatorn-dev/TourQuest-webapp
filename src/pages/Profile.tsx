@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import firebase from 'firebase';
 
 const MOCKING_USER = 'SPnx58ZW8iu0A5rftlqA';
@@ -9,7 +9,8 @@ function Profile() {
 		checkins: any,
 		setCheckins: any
 	] = useState(null);
-	const [badges, setBadges]: [badges: any, setBadges: any] = useState(null);
+    const [badges, setBadges]: [badges: any, setBadges: any] = useState(null);
+    const [loading, setLoading]: [loading: any, setLoading: any] = useState(true);
 	useEffect(() => {
 		const fetchData = async () => {
 			const userRef = firebase
@@ -23,25 +24,34 @@ function Profile() {
 			const badgesDocs = await badgeRef.get();
 			const badgesData: any = [];
 			badgesDocs.forEach((doc) => {
-				badgesData.push({id: doc.id, ...doc.data()});
-            });
-            setBadges(badgesData);
+				badgesData.push({ id: doc.id, ...doc.data() });
+			});
+			setBadges(badgesData);
 
 			const checkinRef = firebase.firestore().collection('checkins');
-			const checkinsDocs = await checkinRef.where('user', '==', MOCKING_USER).get();
+			const checkinsDocs = await checkinRef
+				.where('user', '==', MOCKING_USER)
+				.get();
 			const checkinsData: any = [];
 			checkinsDocs.forEach((doc) => {
-				checkinsData.push({id: doc.id, ...doc.data()});
-            });
+				checkinsData.push({ id: doc.id, ...doc.data() });
+			});
             setCheckins(checkinsData);
-
-            console.log(userDoc.data());
-            console.log(badgesData);
-            console.log(checkinsData);
+            setLoading(false);
 		};
-        fetchData();
+		fetchData();
 	}, []);
-	return <>{user && user.name}</>;
+	return <>
+        {
+        !loading && 
+            <>
+                <h2>{user.name}</h2>
+                <p>{user.about}</p>
+                <p>Level: {user.level}</p>
+                <img src={user.image} alt="" width="64"/>
+            </>
+        }
+    </>;
 }
 
 export default Profile;
