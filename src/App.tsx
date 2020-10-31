@@ -9,6 +9,7 @@ import CheckinQR from './components/CheckinQR';
 import 'leaflet/dist/leaflet.css';
 import SuccessPage from './pages/SuccessPage';
 import { fireEvent } from '@testing-library/react';
+import Redeem from './pages/Redeem';
 
 function App() {
 	useEffect(() => {
@@ -27,20 +28,7 @@ function App() {
 	}, []);
 	return (
 		<Router>
-			<div>
-				{/* <nav>
-					<ul>
-						<li>
-							<Link to='/map'>Map</Link>
-						</li>
-						<li>
-							<Link to='/detail'>Detail</Link>
-						</li>
-						<li>
-							<Link to='/profile'>Profile</Link>
-						</li>
-					</ul>
-				</nav> */}
+			<div className="gradient-teal h-screen">
 				<Appbar />
 				<Switch>
 					<Route path='/' exact component={QuestMap} />
@@ -61,6 +49,7 @@ function App() {
 							/>
 						</Route>
 						<Route path='/success' component={SuccessPage}></Route>
+						<Route path='/redeem' component={Redeem} />
 					</div>
 					{/* <Route path='/profile'>
 						<Profile db={firebase.firestore()} />
