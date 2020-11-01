@@ -18,25 +18,27 @@ export default function Appbar() {
                 </div>
                 <div>
                     {
-                        drawerOpen ? 
+                        drawerOpen ?
                             <MdClose size={32} color="white" onClick={toggleDrawer} />
-                        : 
+                            :
                             <MdMenu size={32} color="white" onClick={toggleDrawer} />
                     }
                 </div>
                 {
-                    drawerOpen && 
+                    drawerOpen &&
                     <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
                         <div className="text-sm lg:flex-grow">
-                            <Link className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" to="/" onClick={toggleDrawer}>
-                                Map
+                            <div className="divide-y divide-gray-400">
+                                <Link className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" to="/" onClick={toggleDrawer}>
+                                    Map
                             </Link>
-                            <Link className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" to="/profile" onClick={toggleDrawer}>
-                                Profile
+                                <Link className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" to="/profile" onClick={toggleDrawer}>
+                                    Profile
                             </Link>
-                            <Link className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" to="/redeem" onClick={toggleDrawer}>
-                                Redeem
+                                <Link className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" to="/redeem" onClick={toggleDrawer}>
+                                    Redeem
                             </Link>
+                            </div>
                         </div>
                     </div>
                 }
