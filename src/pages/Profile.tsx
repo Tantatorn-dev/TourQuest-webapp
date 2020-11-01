@@ -15,8 +15,11 @@ function Profile() {
 	);
 	const firebase = useFirebase();
 	useEffect(() => {
-		async function fetchData () {
-			const userRef = firebase.firestore().collection('users').doc(MOCKING_USER);
+		async function fetchData() {
+			const userRef = firebase
+				.firestore()
+				.collection('users')
+				.doc(MOCKING_USER);
 			const userDoc = await userRef.get();
 			setUser(userDoc.data());
 
@@ -27,6 +30,7 @@ function Profile() {
 				badgesData.push({ id: doc.id, ...doc.data() });
 			});
 			setBadges(badgesData);
+			console.log('data', badgesData);
 
 			const checkinRef = firebase.firestore().collection('checkins');
 			const checkinsDocs = await checkinRef
@@ -38,18 +42,60 @@ function Profile() {
 			});
 			setCheckins(checkinsData);
 			setLoading(false);
-		};
+		}
 		fetchData();
 	}, []);
 	return (
 		<>
 			{!loading && (
-				<>
-					<h2>{user.name}</h2>
-					<p>{user.about}</p>
-					<p>Level: {user.level}</p>
-					<img src={user.image} alt='' width='64' />
-				</>
+				<div className='flex flex-row w-full justify-center'>
+					<div className='rounded overflow-hidden shadow max-w-xs my-3'>
+						<img
+							src='https://i.imgur.com/dYcYQ7E.png'
+							className='w-full'
+						/>
+						<div className='flex justify-center -mt-8'>
+							<img
+								src={user.image}
+								className='rounded-full border-solid border-white border-2 -mt-3 w-32'
+							/>
+						</div>
+						<div className='text-center px-3 pb-6 pt-2'>
+							<h2 className='text-black text-lg bold font-sans'>
+								{user.name}
+							</h2>
+
+							<p className='font-sans font-light text-grey-dark'>
+								{user.about}
+							</p>
+						</div>
+						<div className='p-4 bg-gray-100'>
+							<h2 className='font-bold'>🏆 Badges</h2>
+							<div className='flex'>
+								{badges.map((badge: any) => {
+									return <img
+										src={badge.image}
+										className='rounded-full border-solid border-white border-2 w-16 h-16'
+									/>;
+								})}
+							</div>
+						</div>
+						<div className='p-4 bg-gray-100 rounded'>
+							<h2 className='font-bold'>
+								Recent Check In
+							</h2>
+							<ul>
+								{checkins
+									.map((checkin: any) => {
+										return (
+											<li>- {checkin.name}</li>
+										);
+									})
+									.reverse()}
+							</ul>
+						</div>
+					</div>
+				</div>
 			)}
 		</>
 	);
