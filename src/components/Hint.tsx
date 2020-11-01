@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Cat from "../assets/cat.jpg";
+import Graffiti from "../assets/graffiti.jpg";
 
 export default function Hint() {
 
@@ -21,25 +21,27 @@ export default function Hint() {
 
                     <div className='modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto p-4'>
                         <div className="bg-gray-400">
-                            <img src={Cat} className="object-cover h-48 w-full ..." />
+                            <img src={Graffiti} className="object-cover h-48 w-full ..." />
                         </div>
-                            <div className='flex justify-between items-center pb-3'>
-                                <p className='text-2xl font-bold'>
-                                    กล้ามาก เก่งมาก ขอบใจมาก
+                        <div className='flex justify-between items-center pb-3'>
+                            <p className='text-2xl font-bold'>
+                                Secret Graffiti
 						</p>
-                            </div>
+                        </div>
 
-                            <p>ด้วยข้าว ด้วยแกงอ่อม ขอหมูกระทะ</p>
+                        <p>ไปถ่ายรูปแนวสตรีทอาร์ทกัน
+                        เห็นใครใครเขารีวิวแล้วทำเอาอิจฉา
+                        </p>
 
-                            <div className='flex justify-end pt-2'>
-                                <button
-                                    onClick={()=>{setIsOpen(false)}}
-                                    className='modal-close bg-blue-600 px-4 p-3 rounded-lg text-white hover:bg-blue-400'>
-                                    Close
+                        <div className='flex justify-end pt-2'>
+                            <button
+                                onClick={() => { setIsOpen(false) }}
+                                className='modal-close bg-blue-600 px-4 p-3 rounded-lg text-white hover:bg-blue-400'>
+                                Close
 						        </button>
-                            </div>
                         </div>
                     </div>
+                </div>
             }
         </div>
     );
