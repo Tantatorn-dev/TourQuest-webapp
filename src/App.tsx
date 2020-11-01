@@ -1,7 +1,6 @@
 import React from 'react';
-import useFirebase from './hooks/useFirebase';
 import './styles/main.css';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PlaceDetail from './pages/PlaceDetail';
 import QuestMap from "./pages/QuestMap";
 import Profile from "./pages/Profile";
