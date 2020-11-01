@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-// import firebase from 'firebase';
+import useFirebase from '../hooks/useFirebase';
 
 const MOCKING_USER = 'SPnx58ZW8iu0A5rftlqA';
 
-function Profile({ db }: { db: any }) {
+function Profile() {
 	const [user, setUser]: [user: any, setData: any] = useState(null);
 	const [checkins, setCheckins]: [
 		checkins: any,
@@ -13,13 +13,14 @@ function Profile({ db }: { db: any }) {
 	const [loading, setLoading]: [loading: any, setLoading: any] = useState(
 		true
 	);
+	const firebase = useFirebase();
 	useEffect(() => {
-		const fetchData = async () => {
-			const userRef = db.collection('users').doc(MOCKING_USER);
+		async function fetchData () {
+			const userRef = firebase.firestore().collection('users').doc(MOCKING_USER);
 			const userDoc = await userRef.get();
 			setUser(userDoc.data());
 
-			const badgeRef = db.collection('badges');
+			const badgeRef = firebase.firestore().collection('badges');
 			const badgesDocs = await badgeRef.get();
 			const badgesData: any = [];
 			badgesDocs.forEach((doc: any) => {
@@ -27,7 +28,7 @@ function Profile({ db }: { db: any }) {
 			});
 			setBadges(badgesData);
 
-			const checkinRef = db.collection('checkins');
+			const checkinRef = firebase.firestore().collection('checkins');
 			const checkinsDocs = await checkinRef
 				.where('user', '==', MOCKING_USER)
 				.get();
