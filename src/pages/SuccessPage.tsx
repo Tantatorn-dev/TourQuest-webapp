@@ -4,8 +4,8 @@ import {
 	FacebookIcon,
 	TwitterIcon,
 	TwitterShareButton,
-	InstapaperIcon,
-	InstapaperShareButton,
+	// InstapaperIcon,
+	// InstapaperShareButton,
 } from 'react-share';
 
 export default function SuccessPage() {

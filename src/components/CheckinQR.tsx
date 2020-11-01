@@ -1,25 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useFirebase from '../hooks/useFirebase';
 import { MdLocationOn } from 'react-icons/md';
 import QrReader from 'react-qr-reader';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const MOCKING_USER = 'SPnx58ZW8iu0A5rftlqA';
 
 function CheckinQR() {
-	// const [qrResult, setQrResult] = useState('');
+	const [loading, setLoading] = useState(false);
 	const firebase = useFirebase();
 	const history = useHistory();
+	const { state }: { state: any } = useLocation();
 
 	const handleScan = async (data: string | null) => {
-		console.log(history);
-		if (data) {
+		if (data && !loading) {
+			setLoading(true);
+			const name: string | null = state.name;
 			const checkinData = {
+				name: name,
 				place: data,
 				timestamp: new Date(),
 				user: MOCKING_USER,
 			};
 			await firebase.firestore().collection('checkins').add(checkinData);
+			history.push('/success', { data });
+			setLoading(false);
 		}
 	};
 
