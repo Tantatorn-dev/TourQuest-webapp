@@ -2,14 +2,17 @@ import React from 'react';
 import useFirebase from '../hooks/useFirebase';
 import { MdLocationOn } from 'react-icons/md';
 import QrReader from 'react-qr-reader';
+import { useHistory } from 'react-router-dom';
 
 const MOCKING_USER = 'SPnx58ZW8iu0A5rftlqA';
 
 function CheckinQR() {
 	// const [qrResult, setQrResult] = useState('');
 	const firebase = useFirebase();
+	const history = useHistory();
 
 	const handleScan = async (data: string | null) => {
+		console.log(history);
 		if (data) {
 			const checkinData = {
 				place: data,

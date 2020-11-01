@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Map, TileLayer, Popup, Marker, Circle } from 'react-leaflet';
+import Modal from 'react-modal';
 import useFirebase from '../hooks/useFirebase';
 import '../styles/leaflet.css';
 import 'leaflet/dist/leaflet.css';
@@ -8,6 +9,8 @@ import '../styles/QuestMap.css';
 
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import Cat from '../assets/cat.jpg';
+import { Link } from 'react-router-dom';
 
 let DefaultIcon = L.icon({
 	iconUrl: icon,
@@ -17,15 +20,19 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 export default function QuestMap() {
+	const [id, setID] = useState("");
+	const [detail, setDetail] = useState("");
+	const [image, setImage] = useState("");
 	const [locations, setLocations] = useState([]);
 	const firebase = useFirebase();
+	const [isOpen, setIsOpen] = useState(false);
 
 	const [position, setPosition]: [
 		position: any | null,
 		setPosition: any
 	] = useState(null);
 
-	const [zoom, ] = useState(80);
+	const [zoom] = useState(80);
 
 	useEffect(() => {
 		navigator.geolocation.getCurrentPosition(function (position) {
@@ -37,7 +44,7 @@ export default function QuestMap() {
 	}, []);
 
 	useEffect(() => {
-		async function fetchData () {
+		async function fetchData() {
 			const placeRef = firebase.firestore().collection('places');
 			const placesDocs = await placeRef.get();
 			const placesData: any = [];
@@ -45,14 +52,23 @@ export default function QuestMap() {
 				placesData.push({ id: doc.id, ...doc.data() });
 			});
 			setLocations(placesData);
-		};
+		}
 		fetchData();
 	}, []);
 
 	return (
 		<div>
-			{locations && console.log(locations)}
-			{position && (
+			<Modal isOpen={isOpen} contentLabel='Hint'>
+				<div className='bg-gray-400'>
+					<img
+						className='object-cover h-48 w-full ...'
+						src={Cat}
+					/>
+				</div>
+				<h2>Very good</h2>
+				<button onClick={() => setIsOpen(false)}>close</button>
+			</Modal>
+			{position && !isOpen && (
 				<>
 					<Map center={position} zoom={zoom}>
 						<TileLayer
@@ -62,22 +78,33 @@ export default function QuestMap() {
 						<Circle center={position} radius={200}></Circle>
 						<Marker position={position}>
 							<Popup>
-								fyi Building <br /> Dreamer working
+								<p>
+									fyi Building <br /> Dreamer working
 								here!
+								</p>
 							</Popup>
 						</Marker>
-						{
-							locations.map(loc => {
-								const pos = { lat: 0, lng: 0 };
-								// pos.lat = loc.position;
-								return <Marker position={position}></Marker>
-							}
-							)
-						}
+						{locations.map(({ position, id, name, detail, image }: { position: any, id: any, name:any, detail:any, image:any }) => {
+							const pos = { lng: position.c_, lat: position.h_ };
+							return (
+								<div>
+								<Marker position={pos}>
+									<Popup>
+										<Link to={{pathname:"/detail", state:{id:id, name:name, detail:detail, image:image}}} >
+											<button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">click here to see detail</button>
+										</Link>
+									</Popup>
+								</Marker>
+								</div>
+								);
+						})}
 					</Map>
-					<div className='bg-blue-600 text-white font-bold py-2 px-4 m-2 rounded hint-icon hover:'>
+					<button
+						onClick={() => setIsOpen(true)}
+						className='bg-blue-600 text-white font-bold py-2 px-4 m-2 rounded hint-icon hover:'
+					>
 						Hint found!
-					</div>
+					</button>
 				</>
 			)}
 		</div>
