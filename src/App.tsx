@@ -27,16 +27,7 @@ function App() {
 							<CheckinQR />
 						</Route>
 						<Route path='/detail'>
-							<PlaceDetail
-								id={'2P0oCX8wWZdG7ISokBrI'}
-								name={'Wat Phra Kaew'}
-								image={
-									'https://lp-cms-production.imgix.net/2019-06/f38562393be73d571e111dbd0b060d58-wat-phra-kaew.jpg'
-								}
-								detail={
-									'Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce leo augue, imperdiet sit amet odio a, imperdiet condimentum ante. Integer nec leo id nibh elementum posuere.'
-								}
-							/>
+							<PlaceDetail />
 						</Route>
 						<Route path='/success' component={SuccessPage}></Route>
 						<Route path='/redeem' component={Redeem} />
