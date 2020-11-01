@@ -10,6 +10,7 @@ import '../styles/QuestMap.css';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import Cat from '../assets/cat.jpg';
+import { Link } from 'react-router-dom';
 
 let DefaultIcon = L.icon({
 	iconUrl: icon,
@@ -19,6 +20,9 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 export default function QuestMap() {
+	const [id, setID] = useState("");
+	const [detail, setDetail] = useState("");
+	const [image, setImage] = useState("");
 	const [locations, setLocations] = useState([]);
 	const firebase = useFirebase();
 	const [isOpen, setIsOpen] = useState(false);
@@ -74,13 +78,25 @@ export default function QuestMap() {
 						<Circle center={position} radius={200}></Circle>
 						<Marker position={position}>
 							<Popup>
-								fyi Building <br /> Dreamer working
+								<p>
+									fyi Building <br /> Dreamer working
 								here!
+								</p>
 							</Popup>
 						</Marker>
-						{locations.map(({ position }: { position: any }) => {
+						{locations.map(({ position, id, name, detail, image }: { position: any, id: any, name:any, detail:any, image:any }) => {
 							const pos = { lng: position.c_, lat: position.h_ };
-							return <Marker position={pos}></Marker>;
+							return (
+								<div>
+								<Marker position={pos}>
+									<Popup>
+										<Link to={{pathname:"/detail", state:{id:id, name:name, detail:detail, image:image}}} >
+											<button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">click here to see detail</button>
+										</Link>
+									</Popup>
+								</Marker>
+								</div>
+								);
 						})}
 					</Map>
 					<button
