@@ -20,9 +20,6 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 export default function QuestMap() {
-	const [id, setID] = useState("");
-	const [detail, setDetail] = useState("");
-	const [image, setImage] = useState("");
 	const [locations, setLocations] = useState([]);
 	const firebase = useFirebase();
 	const [isOpen, setIsOpen] = useState(false);
