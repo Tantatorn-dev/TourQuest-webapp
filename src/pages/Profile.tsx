@@ -3,12 +3,8 @@ import useFirebase from '../hooks/useFirebase';
 
 const MOCKING_USER = 'SPnx58ZW8iu0A5rftlqA';
 
-<<<<<<< HEAD
 export default function Profile() {
 	const firebase = useFirebase();
-=======
-function Profile() {
->>>>>>> 9285aac18cf496a853abeafc01eadc15f290a2cc
 	const [user, setUser]: [user: any, setData: any] = useState(null);
 	const [checkins, setCheckins]: [
 		checkins: any,
@@ -18,19 +14,12 @@ function Profile() {
 	const [loading, setLoading]: [loading: any, setLoading: any] = useState(
 		true
 	);
-	const firebase = useFirebase();
 	useEffect(() => {
-<<<<<<< HEAD
-		console.log('first useEffect');
-		async function fetchData () {
-			const userRef = firebase.firestore().collection('users').doc(MOCKING_USER);
-=======
 		async function fetchData() {
 			const userRef = firebase
 				.firestore()
 				.collection('users')
 				.doc(MOCKING_USER);
->>>>>>> 9285aac18cf496a853abeafc01eadc15f290a2cc
 			const userDoc = await userRef.get();
 			console.log('Hey!');
 			setUser(userDoc.data());
@@ -64,17 +53,6 @@ function Profile() {
 
 	return (
 		<>
-<<<<<<< HEAD
-			<h2>WTF</h2>
-			{/* {!loading && (
-				<>
-					<h2>{user.name}</h2>
-					<p>{user.about}</p>
-					<p>Level: {user.level}</p>
-					<img src={user.image} alt='' width='64' />
-				</>
-			)} */}
-=======
 			{!loading && (
 				<div className='flex flex-row w-full justify-center'>
 					<div className='rounded overflow-hidden shadow max-w-xs my-3'>
@@ -125,7 +103,6 @@ function Profile() {
 					</div>
 				</div>
 			)}
->>>>>>> 9285aac18cf496a853abeafc01eadc15f290a2cc
 		</>
 	);
 }
