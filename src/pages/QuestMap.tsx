@@ -10,6 +10,7 @@ import '../styles/QuestMap.css';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import Cat from '../assets/cat.jpg';
+import { Route, Link } from 'react-router-dom';
 
 let DefaultIcon = L.icon({
 	iconUrl: icon,
@@ -74,8 +75,13 @@ export default function QuestMap() {
 						<Circle center={position} radius={200}></Circle>
 						<Marker position={position}>
 							<Popup>
-								fyi Building <br /> Dreamer working
+								<p>
+									fyi Building <br /> Dreamer working
 								here!
+								</p>
+								<Link to="/detail" >
+									<button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">click here to see detail</button>
+								</Link>
 							</Popup>
 						</Marker>
 						{locations.map(({ position }: { position: any }) => {
