@@ -1,46 +1,46 @@
 import React, { useState } from 'react';
-import Modal from "react-modal";
 import Cat from "../assets/cat.jpg";
 
-const customStyles = {
-    content: {
-        top: '30%',
-        left: '40%',
-        right: 'auto',
-        bottom: 'auto',
-    }
-};
-
 export default function Hint() {
-    var subtitle: any;
+
     const [isOpen, setIsOpen] = useState(false);
 
-    function openModal() {
-        setIsOpen(true);
-    }
-
-    function afterOpenModal() {
-        // references are now sync'd and can be accessed.
-        subtitle.style.color = '#f00';
-    }
-
-
-    function closeModal() {
-        setIsOpen(false);
-    }
-
     return (
-        <div className="flex h-screen">
-            <div className="m-auto">
-                <button onClick={openModal}>Open Modal</button>
-                <Modal isOpen={isOpen} style={customStyles} contentLabel="Hint">
-                    <div className="bg-gray-400">
-                        <img className="object-cover h-48 w-full ..." src={Cat} />
+        <div>
+            <button
+                onClick={() => setIsOpen(true)}
+                className='bg-blue-600 text-white font-bold py-2 px-4 m-2 rounded hint-icon hover:'
+            >
+                Hint found!
+			</button>
+            { isOpen &&
+                <div
+                    className={`hint-modal modal fixed w-full h-full top-0 left-0 flex items-center justify-center`}
+                >
+                    <div className='modal-overlay absolute w-full h-full bg-gray-900 opacity-50'></div>
+
+                    <div className='modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto p-4'>
+                        <div className="bg-gray-400">
+                            <img src={Cat} className="object-cover h-48 w-full ..." />
+                        </div>
+                            <div className='flex justify-between items-center pb-3'>
+                                <p className='text-2xl font-bold'>
+                                    กล้ามาก เก่งมาก ขอบใจมาก
+						</p>
+                            </div>
+
+                            <p>ด้วยข้าว ด้วยแกงอ่อม ขอหมูกระทะ</p>
+
+                            <div className='flex justify-end pt-2'>
+                                <button
+                                    onClick={()=>{setIsOpen(false)}}
+                                    className='modal-close bg-blue-600 px-4 p-3 rounded-lg text-white hover:bg-blue-400'>
+                                    Close
+						        </button>
+                            </div>
+                        </div>
                     </div>
-                    <h2>กล้ามาก เก่งมาก ขอบใจ</h2>
-                    <button onClick={closeModal}>close</button>
-                </Modal>
-            </div>
+            }
         </div>
     );
 

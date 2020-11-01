@@ -11,6 +11,7 @@ import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import Cat from '../assets/cat.jpg';
 import { Link } from 'react-router-dom';
+import Hint from '../components/Hint';
 
 let DefaultIcon = L.icon({
 	iconUrl: icon,
@@ -55,16 +56,6 @@ export default function QuestMap() {
 
 	return (
 		<div>
-			<Modal isOpen={isOpen} contentLabel='Hint'>
-				<div className='bg-gray-400'>
-					<img
-						className='object-cover h-48 w-full ...'
-						src={Cat}
-					/>
-				</div>
-				<h2>Very good</h2>
-				<button onClick={() => setIsOpen(false)}>close</button>
-			</Modal>
 			{position && !isOpen && (
 				<>
 					<Map center={position} zoom={zoom}>
@@ -96,12 +87,7 @@ export default function QuestMap() {
 								);
 						})}
 					</Map>
-					<button
-						onClick={() => setIsOpen(true)}
-						className='bg-blue-600 text-white font-bold py-2 px-4 m-2 rounded hint-icon hover:'
-					>
-						Hint found!
-					</button>
+					<Hint />
 				</>
 			)}
 		</div>

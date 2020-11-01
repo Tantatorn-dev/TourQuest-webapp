@@ -4,3 +4,7 @@
     right: 0;
     bottom: 0;
 }
+
+.hint-modal{
+    z-index: 1000;
+}
